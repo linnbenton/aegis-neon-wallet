@@ -44,7 +44,7 @@ Follow these commands within your terminal (PowerShell / WSL Ubuntu supported) t
 1.  **Clone the Repository & Navigate to Workspace:**
 
     ```bash
-    git clone <your-repository-url>
+    git clone https://github.com/linnbenton/aegis-neon-wallet.git
     cd aegis-neon-wallet
     ```
 

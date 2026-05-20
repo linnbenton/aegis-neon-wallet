@@ -106,7 +106,7 @@ export default function Home() {
           riskLevel: "CRITICAL",
           type: "POISONING",
           analysis:
-            "CRITICAL WARNING: Alamat tujuan memiliki kemiripan karakter depan/belakang sebesar 95% dengan dompet sekunder Anda, namun struktur internalnya berbeda. Ini adalah skema Address Poisoning aktif. TokenCore membatalkan pembentukan tanda tangan otomatis.",
+            "CRITICAL WARNING: Destination address shares a 95% front/back character spoofing match with your secondary wallet, but internal structures mismatch. Active Address Poisoning vector detected. TokenCore halted automated signature generation.",
           actionRequired: true,
           fheHash: "0x8f3b...fa92 (Shielded via Homomorphic Noise)",
         });
@@ -125,7 +125,7 @@ export default function Home() {
           riskLevel: "LOW",
           type: "STANDARD",
           analysis:
-            "Intent tervalidasi dengan aman. TokenCore berhasil merancang rute optimal lintas rantai dengan slippage minimum (<0.1%) dan efisiensi MEV.",
+            "Intent safely validated. TokenCore successfully mapped an optimized cross-chain route with minimal slippage (<0.1%) and robust MEV insulation.",
           actionRequired: false,
           fheHash: "0x2a91...bc4f (Encrypted Payload State)",
         });
@@ -140,7 +140,7 @@ export default function Home() {
           riskLevel: "HIGH",
           type: "MALICIOUS",
           analysis:
-            "PERINGATAN: Kontrak tujuan tidak terdaftar dalam imToken Safe Registry. Terdapat fungsi tersembunyi yang berpotensi melakukan pengurasan delegasi persetujuan aset (Approval Drainer).",
+            "WARNING: Destination smart contract is unverified within the imToken Safe Registry. Hidden parameters detected containing potential high-risk asset Approval Drainer functions.",
           actionRequired: true,
           fheHash: "0x11ce...44bb (Blocked State)",
         });
@@ -259,7 +259,7 @@ export default function Home() {
             <form onSubmit={handleAiCoCreation} className="space-y-4">
               <div className="flex justify-between items-center">
                 <label className="block text-xs font-bold text-cyan-400 uppercase tracking-wider">
-                  Ketik Instruksi Manajemen Aset Anda:
+                  Enter Your Asset Management Prompt / Intent:
                 </label>
               </div>
               <div className="relative">
@@ -267,7 +267,7 @@ export default function Home() {
                   type="text"
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
-                  placeholder="e.g., 'Amankan posisi staking via bridge' atau 'Kirim 0.5 ETH ke 0xAbC123...'"
+                  placeholder="e.g., 'Secure staking position via bridge' or 'Send 0.5 ETH to 0xAbC123...'"
                   className="w-full bg-gray-950 border border-gray-800 focus:border-fuchsia-500 rounded-lg pl-4 pr-28 py-3 text-sm text-gray-200 outline-none transition-all duration-300 shadow-inner"
                 />
                 <button
@@ -337,7 +337,7 @@ export default function Home() {
                       disabled
                       className="bg-red-500/20 text-red-400 border border-red-500/40 text-xs px-4 py-2 rounded cursor-not-allowed uppercase font-bold tracking-widest"
                     >
-                      Transaksi Diblokir Otomatis
+                      Transaction Auto-Blocked
                     </button>
                   ) : (
                     <button
@@ -348,14 +348,16 @@ export default function Home() {
                       }
                       className="bg-emerald-500 hover:bg-emerald-400 text-gray-950 font-bold text-xs px-5 py-2 rounded transition-all uppercase tracking-wider flex items-center gap-2"
                     >
-                      {txStatus === "IDLE" && <>Eksekusi Aman via TokenCore</>}
+                      {txStatus === "IDLE" && (
+                        <>Execute Secure Intent via TokenCore</>
+                      )}
                       {txStatus === "EXECUTING" && (
-                        <>Memproses Multi-Sig Node...</>
+                        <>Processing Multi-Sig Nodes...</>
                       )}
                       {txStatus === "SUCCESS" && (
                         <>
-                          <CheckCircle2 className="w-4 h-4" /> Transaksi Sukses!
-                          ✓
+                          <CheckCircle2 className="w-4 h-4" /> Transaction
+                          Finalized! ✓
                         </>
                       )}
                     </button>
@@ -397,8 +399,8 @@ export default function Home() {
                       Data Obfuscated via FHE Shield
                     </p>
                     <p className="text-[10px] text-gray-500 mt-1">
-                      Nonaktifkan FHE Shield di panel atas untuk melihat grafik
-                      riil
+                      Deactivate FHE Shield in the upper panel to view unmasked
+                      real-time telemetry
                     </p>
                   </div>
                 )}
@@ -473,7 +475,7 @@ export default function Home() {
                         strokeWidth={2}
                         fillOpacity={1}
                         fill="url(#colorAsset)"
-                        name="Nilai Aktual"
+                        name="Actual Valuation"
                       />
                       <Area
                         type="monotone"
@@ -483,7 +485,7 @@ export default function Home() {
                         strokeDasharray="4 4"
                         fillOpacity={1}
                         fill="url(#colorPredict)"
-                        name="Prediksi AI"
+                        name="AI Forecast"
                       />
                     </AreaChart>
                   </ResponsiveContainer>
@@ -539,11 +541,11 @@ export default function Home() {
                 </div>
                 <div className="bg-gray-900/50 p-2.5 rounded border border-gray-800 text-[10px] text-gray-400 flex justify-between items-center">
                   <span>
-                    Slippage Proteksi:{" "}
+                    Slippage Protection:{" "}
                     <strong className="text-emerald-400">0.05%</strong>
                   </span>
                   <span>
-                    Estimasi Waktu Tiba:{" "}
+                    Estimated Arrival Time:{" "}
                     <strong className="text-cyan-400">~45 Detik</strong>
                   </span>
                 </div>
