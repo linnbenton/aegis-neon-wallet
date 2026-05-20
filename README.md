@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛡️ Aegis Neon // imToken 10th Anniversary Hackathon Project
 
-## Getting Started
+Aegis Neon is a high-fidelity, production-ready cyberpunk secure wallet dashboard conceptually co-created to leverage the powerhouse infrastructure of **imToken TokenCore SDK** combined with advanced **AI Intent Models**, **Fully Homomorphic Encryption (FHE)** simulations, and **Multi-Party Computation (MPC)** safe threshold architecture.
 
-First, run the development server:
+Built inside a high-performance framework utilizing Next.js (App Router), TypeScript, and Tailwind CSS.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Key Architectural Pillars (Submission Focus)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. imToken TokenCore Interface Integration (Conceptual)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Designed to hook into the upcoming TokenCore SDK releases. The front-end is mapped out with active listeners inside `handleAiCoCreation()` to easily bind real-time smart wallet states, signature handshakes, and wallet deployment payloads once the SDK keys are provisioned during the official developer workshops.
 
-## Learn More
+### 2. AI-Driven Fraud Detection Matrix
 
-To learn more about Next.js, take a look at the following resources:
+- **Address Poisoning Filter:** Features an active frontend heuristic analyzer simulating TokenCore network telemetry. Typing suspicious transaction prompts (e.g., matching common spoofed transaction prefixes/suffixes) flags a **98/100 Critical Risk Score**, stopping malicious state creation before signing.
+- **Malicious Approval Drainer Alert:** Intercepts unverified natural language intent routing to block deceptive token delegation.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. Cross-Chain Intelligent Route Planner
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Features an active module visualizing multi-chain execution targets (**Ethereum, Solana, and Bitcoin Layer-1 via OP_NET**). The system graphs the path of intent execution across source structures, the protective bridge vault, and optimization solver nodes.
 
-## Deploy on Vercel
+### 4. FHE Privacy Shield & 2-of-3 MPC Threshold Scheme
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+An interactive security toggle designed to mask financial metadata. When toggled **ON**, the client view triggers obfuscation protocols—simulating zero-knowledge noise encryption parameters that shield the user's Net Worth and sensitive predictive charts from side-channel vector leaks.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🛠️ Tech Stack & Dependencies
+
+- **Framework:** Next.js 14+ (App Router)
+- **Language:** TypeScript (Strict Type Safety)
+- **Styling:** Tailwind CSS (Neon-pulse & Custom Matrix Theming)
+- **Icons:** Lucide React
+- **Data Visualization:** Recharts (Predictive Wealth Engine Optimization charts)
+
+---
+
+## ⚡ Local Development Setup
+
+Follow these commands within your terminal (PowerShell / WSL Ubuntu supported) to get the dashboard live:
+
+1.  **Clone the Repository & Navigate to Workspace:**
+
+    ```bash
+    git clone <your-repository-url>
+    cd aegis-neon-wallet
+    ```
+
+2.  **Install Dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3.  **Boot the Production-Ready Local Server:**
+
+    ```bash
+    npm run dev
+    ```
+
+4.  **Access the Framework Dashboard:**
+    Open [http://localhost:3000](http://localhost:3000) on your local browser.
+
+---
+
+## 🔮 Hackathon Roadmap & Next Milestones
+
+- [x] **Phase 1:** Core Theme UI/UX Implementation (Cyberpunk Theming complete)
+- [x] **Phase 2:** Advanced Security Simulation Layers (Address Poisoning, FHE Privacy Shield, and Multi-Chain nodes operational)
+- [ ] **Phase 3:** Workshop Sync - Import `@imtoken/token-core` npm packages upon official release.
+- [ ] **Phase 4:** Swap client-side mock handlers with backend contract interaction parameters.
+
+---
+
+**Developer Identifier:** linnbenton  
+**Campaign Event:** imToken 10th Anniversary Hackathon (2026)  
+_Securing the decentralized future through intelligent user intent design._
