@@ -409,6 +409,105 @@ export default function Home() {
                   </div>
                 </div>
 
+                {/* EXECUTION TIMELINE */}
+
+                <div className="mt-5 border border-cyan-500/20 rounded-xl bg-black/30 p-4">
+                  <div className="text-cyan-400 text-xs tracking-[0.25em] mb-4">
+                    AI EXECUTION PIPELINE
+                  </div>
+
+                  <div className="space-y-3">
+                    {[
+                      "Intent Parsed",
+                      "Address Fingerprint Scanned",
+                      "Simulation Complete",
+                      "Security Rules Triggered",
+                      "Transaction Halted",
+                    ].map((step, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-between border-b border-white/5 pb-2"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                          <span className="text-zinc-300 text-sm font-mono">
+                            {step}
+                          </span>
+                        </div>
+
+                        <div className="text-emerald-400 text-xs font-mono">
+                          ✓ VERIFIED
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* AI REASONING LOG */}
+
+                <div className="mt-5 border border-fuchsia-500/20 rounded-xl bg-black/40 p-4">
+                  <div className="text-fuchsia-400 text-xs tracking-[0.25em] mb-4">
+                    AI EXECUTION LOG
+                  </div>
+
+                  <div className="space-y-2 text-sm font-mono text-zinc-400 leading-relaxed">
+                    <p>&gt; Detected suspicious address entropy mismatch.</p>
+
+                    <p>&gt; Prefix/suffix spoof pattern identified.</p>
+
+                    <p>
+                      &gt; Transaction behavior deviates from historical wallet
+                      profile.
+                    </p>
+
+                    <p className="text-red-400">
+                      &gt; Confidence Score: 97.2% — AUTO BLOCK TRIGGERED
+                    </p>
+                  </div>
+                </div>
+
+                {/* TRANSACTION SIMULATION */}
+
+                <div className="mt-5 grid grid-cols-2 gap-4">
+                  {[
+                    {
+                      label: "Estimated Gas",
+                      value: "0.0012 ETH",
+                      color: "text-cyan-400",
+                    },
+                    {
+                      label: "Threat Probability",
+                      value: "HIGH",
+                      color: "text-red-400",
+                    },
+                    {
+                      label: "Simulation Success",
+                      value: "12%",
+                      color: "text-yellow-400",
+                    },
+                    {
+                      label: "Execution Route",
+                      value: "ETH MAINNET",
+                      color: "text-emerald-400",
+                    },
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="border border-white/10 rounded-xl bg-black/30 p-4"
+                    >
+                      <div className="text-[10px] tracking-[0.2em] text-zinc-500 mb-2">
+                        {item.label}
+                      </div>
+
+                      <div
+                        className={`text-lg font-bold font-mono ${item.color}`}
+                      >
+                        {item.value}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
                 <div className="mt-4 pt-3 border-t border-gray-800/60 flex justify-end">
                   {aiReport.actionRequired ? (
                     <button

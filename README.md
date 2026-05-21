@@ -6,6 +6,14 @@ Aegis Neon transforms complex multi-chain execution into simple human-readable i
 
 ---
 
+# 🖥️ Preview
+
+<p align="center">
+  <img src="./public/preview.png" width="1200"/>
+</p>
+
+---
+
 # ⚡ Core Architecture
 
 Aegis Neon operates through a dual-layer security and automation framework tailored for next-generation Web3 asset management.
@@ -78,6 +86,23 @@ Built with multi-network routing support out of the box.
 
 ---
 
+# 🤖 AI Execution Pipeline
+
+Aegis Neon simulates a multi-stage intent verification and transaction security lifecycle inspired by modern autonomous wallet architectures.
+
+## Execution Stages
+
+1. Intent Parsing
+2. Address Fingerprint Analysis
+3. Transaction Simulation
+4. Security Rule Evaluation
+5. MPC/FHE Verification
+6. Autonomous Transaction Resolution
+
+The execution engine continuously evaluates risk conditions before transaction finalization, enabling proactive protection against spoofing, malicious contracts, and poisoned address vectors.
+
+---
+
 # 🛠️ Technical Stack
 
 | Layer               | Technology                                     |
@@ -120,6 +145,20 @@ Visit:
 ```txt
 http://localhost:3000
 ```
+
+---
+
+# 🚀 Live Prototype Features
+
+- AI-driven intent execution interface
+- Simulated TokenCore security analysis
+- Address poisoning detection
+- Autonomous transaction blocking
+- FHE-inspired privacy masking
+- Multi-chain routing visualization
+- Real-time execution pipeline states
+- AI reasoning telemetry logs
+- Transaction simulation metrics
 
 ---
 
