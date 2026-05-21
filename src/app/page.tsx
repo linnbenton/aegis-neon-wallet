@@ -90,68 +90,75 @@ export default function Home() {
     setAiReport(null);
     setTerminalLogs((prev) => [
       ...prev,
-      `[USER_INTENT] Parsing payload: "${prompt}"`,
-      "[AI_AGENT] Generating static execution graph...",
+      `[USER_INTENT] Parsing payload via ConsenLabs Security Skill...`,
+      "[AI_AGENT] Contacting token-core API endpoints...",
     ]);
 
-    setTimeout(() => {
-      const lowerPrompt = prompt.toLowerCase();
+    try {
+      // HIT API ROUTE ASLI YANG KITA BUAT BERDASARKAN DOKUMENTASI MONOREPO
+      const response = await fetch("/api/token-core", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "VALIDATE_INTENT",
+          chain: selectedChain,
+          data: { prompt },
+        }),
+      });
 
-      if (
-        lowerPrompt.includes("0x") &&
-        (lowerPrompt.includes("kirim") || lowerPrompt.includes("send"))
-      ) {
+      const result = await response.json();
+
+      if (result.reason === "ADDRESS_POISONING_DETECTED") {
         setAiReport({
-          riskScore: 98,
+          riskScore: result.score,
           riskLevel: "CRITICAL",
           type: "POISONING",
-          analysis:
-            "CRITICAL WARNING: Destination address shares a 95% front/back character spoofing match with your secondary wallet, but internal structures mismatch. Active Address Poisoning vector detected. TokenCore halted automated signature generation.",
+          analysis: result.details,
           actionRequired: true,
           fheHash: "0x8f3b...fa92 (Shielded via Homomorphic Noise)",
         });
         setTerminalLogs((prev) => [
           ...prev,
-          "[SECURITY] CRITICAL: Address Poisoning pattern verified!",
-          "[TOKEN_CORE] Core signature creation blocked.",
+          "[SECURITY] CRITICAL: Address Poisoning pattern verified by tcx backend!",
+          "[TOKEN_CORE] Signature pipeline locked.",
         ]);
-      } else if (
-        lowerPrompt.includes("staking") ||
-        lowerPrompt.includes("amankan") ||
-        lowerPrompt.includes("bridge")
-      ) {
+      } else if (result.reason === "UNVERIFIED_CONTRACT_INTERACTION") {
         setAiReport({
-          riskScore: 12,
-          riskLevel: "LOW",
-          type: "STANDARD",
-          analysis:
-            "Intent safely validated. TokenCore successfully mapped an optimized cross-chain route with minimal slippage (<0.1%) and robust MEV insulation.",
-          actionRequired: false,
-          fheHash: "0x2a91...bc4f (Encrypted Payload State)",
-        });
-        setTerminalLogs((prev) => [
-          ...prev,
-          "[AI_AGENT] Route mapping optimized.",
-          "[TOKEN_CORE] Signature parameters appended successfully.",
-        ]);
-      } else {
-        setAiReport({
-          riskScore: 75,
+          riskScore: result.score,
           riskLevel: "HIGH",
           type: "MALICIOUS",
-          analysis:
-            "WARNING: Destination smart contract is unverified within the imToken Safe Registry. Hidden parameters detected containing potential high-risk asset Approval Drainer functions.",
+          analysis: result.details,
           actionRequired: true,
           fheHash: "0x11ce...44bb (Blocked State)",
         });
         setTerminalLogs((prev) => [
           ...prev,
-          "[SECURITY] WARNING: Unverified dApp signature parameters.",
+          "[SECURITY] WARNING: Unverified dApp signature signature found in token-ui parameters.",
           "[TOKEN_CORE] Refused payload deployment.",
         ]);
+      } else {
+        setAiReport({
+          riskScore: result.score,
+          riskLevel: "LOW",
+          type: "STANDARD",
+          analysis: result.details,
+          actionRequired: false,
+          fheHash: "0x2a91...bc4f (Encrypted Payload State)",
+        });
+        setTerminalLogs((prev) => [
+          ...prev,
+          "[AI_AGENT] ConsenLabs routing path mapped successfully.",
+          "[TOKEN_CORE] Signature parameters appended.",
+        ]);
       }
+    } catch (err) {
+      setTerminalLogs((prev) => [
+        ...prev,
+        "[ERROR] Failed to communicate with TokenCore backend mono-repo module.",
+      ]);
+    } finally {
       setIsAnalyzing(false);
-    }, 1200);
+    }
   };
 
   const executeTransaction = () => {
